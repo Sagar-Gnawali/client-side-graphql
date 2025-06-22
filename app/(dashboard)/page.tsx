@@ -17,14 +17,27 @@ import {
 } from "@nextui-org/react";
 import { PlusIcon } from "lucide-react";
 import Issue from "../_components/Issue";
+import { IssueMutation } from "@/gql/issueMutation";
 
 const IssuesPage = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [issueName, setIssueName] = useState("");
   const [issueDescription, setIssueDescription] = useState("");
+  const [createIssueResult, createIssue] = useMutation(IssueMutation);
+  const { fetching } = createIssueResult;
 
-  const onCreate = async (close) => {};
-
+  const onCreate = async (close: () => void) => {
+    const payload = {
+      name: issueName,
+      content: issueDescription,
+    }
+    const res = await createIssue({ data: payload });
+    if (res.data?.createIssue?.id) {
+      setIssueName("");
+      setIssueDescription("");
+      close();
+    };
+  }
   return (
     <div>
       <PageHeader title="All issues">
@@ -89,6 +102,7 @@ const IssuesPage = () => {
                   Cancel
                 </Button>
                 <Button
+                  isLoading={fetching}
                   variant="solid"
                   className="bg-black text-white"
                   onPress={() => onCreate(onClose)}
