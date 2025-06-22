@@ -1,12 +1,15 @@
 import Logo from "@/app/_components/Logo";
-import { Boxes, LayoutGrid, Settings } from "lucide-react";
+import { removeToken } from "@/utils/token";
+import { Boxes, LayoutGrid, LogOut, Settings } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const links = [
   { href: "/", name: "Issues", Icon: Boxes },
   { href: "/projects", name: "Projects", Icon: LayoutGrid },
   { href: "/settings", name: "Settings", Icon: Settings },
 ];
+const sideBarClass = "flex gap-2 items-center hover:bg-white border hover:border-black/20 border-transparent py-2 px-2 rounded-lg transition-all";
 
 const Sidebar = () => {
   return (
@@ -22,7 +25,7 @@ const Sidebar = () => {
             return (
               <div key={link.href}>
                 <Link href={link.href}>
-                  <div className="flex gap-2 items-center hover:bg-white border hover:border-black/20 border-transparent py-2 px-2 rounded-lg transition-all">
+                  <div className={sideBarClass}>
                     <link.Icon size={16} />
                     <span>{link.name}</span>
                   </div>
@@ -30,6 +33,18 @@ const Sidebar = () => {
               </div>
             );
           })}
+          <div className="">
+            <div
+              className={sideBarClass}
+              onClick={() => {
+                removeToken();
+                redirect("/signin");
+              }}
+            >
+              <LogOut size={16} />
+              <button>Logout</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
