@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { Button, Input } from '@nextui-org/react'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { Button, Input } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const SignupPage = () => {
-  const [state, setState] = useState({ password: '', email: '' })
-  const router = useRouter()
+  const [state, setState] = useState({ password: "", email: "" });
+  const router = useRouter();
 
   const handleSignup = async (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <div className="bg-white rounded-md border p-4 w-full shadow-sm">
@@ -23,7 +23,7 @@ const SignupPage = () => {
             variant="faded"
             label="Email"
             classNames={{
-              inputWrapper: 'bg-slate-50 border-slate-100',
+              inputWrapper: "bg-slate-50 border-slate-100",
             }}
           />
         </div>
@@ -34,7 +34,7 @@ const SignupPage = () => {
             onValueChange={(v) => setState((s) => ({ ...s, password: v }))}
             label="Password"
             type="password"
-            classNames={{ inputWrapper: 'bg-slate-50 border-slate-100' }}
+            classNames={{ inputWrapper: "bg-slate-50 border-slate-100" }}
           />
         </div>
         <div className="text-end">
@@ -44,7 +44,7 @@ const SignupPage = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SignupPage
+export default SignupPage;

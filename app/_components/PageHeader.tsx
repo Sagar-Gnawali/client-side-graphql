@@ -4,7 +4,7 @@ const PageHeader = ({ title, children }) => {
       <span>{title}</span>
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default PageHeader
+export default PageHeader;
