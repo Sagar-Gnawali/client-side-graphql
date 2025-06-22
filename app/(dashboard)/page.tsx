@@ -18,7 +18,14 @@ import {
 import { PlusIcon } from "lucide-react";
 import Issue from "../_components/Issue";
 import { IssueMutation } from "@/gql/issueMutation";
-
+import { IssuesQuery } from "@/gql/issueQuery";
+interface IssuesTypes {
+  issues: {
+    name: string;
+    id: string;
+    status: string;
+  }[];
+}
 const IssuesPage = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [issueName, setIssueName] = useState("");
@@ -30,14 +37,17 @@ const IssuesPage = () => {
     const payload = {
       name: issueName,
       content: issueDescription,
-    }
+    };
     const res = await createIssue({ data: payload });
     if (res.data?.createIssue?.id) {
       setIssueName("");
       setIssueDescription("");
       close();
-    };
-  }
+    }
+  };
+  const [{ data, error, fetching: isIssuesFetching }] = useQuery<IssuesTypes>({
+    query: IssuesQuery,
+  });
   return (
     <div>
       <title>Issues</title>
@@ -51,12 +61,13 @@ const IssuesPage = () => {
           </button>
         </Tooltip>
       </PageHeader>
-
-      {[].map((issue) => (
-        <div key={issue.id}>
-          <Issue issue={issue} />
-        </div>
-      ))}
+      {isIssuesFetching && <div className="h-screen flex items-center justify-center"><Spinner /></div>}
+      {data?.issues &&
+        data.issues.map((issue) => (
+          <div key={issue.id}>
+            <Issue issue={issue} />
+          </div>
+        ))}
 
       <Modal
         size="2xl"
@@ -99,7 +110,7 @@ const IssuesPage = () => {
                 </div>
               </ModalBody>
               <ModalFooter className="border-t">
-                <Button variant="ghost" onPress={() => onOpenChange(false)}>
+                <Button variant="ghost" onPress={() => onOpenChange()}>
                   Cancel
                 </Button>
                 <Button
