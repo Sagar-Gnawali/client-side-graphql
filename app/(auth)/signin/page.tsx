@@ -2,6 +2,7 @@
 
 import { setToken } from "@/utils/token";
 import { Button, Input } from "@nextui-org/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useMutation } from "urql";
@@ -16,6 +17,7 @@ const SigninPage = () => {
 
   return (
     <div className="bg-white rounded-md border p-4 w-full shadow-sm">
+      <title>Signin</title>
       <div className="text-2xl text-black/70">Sign in</div>
       <form onSubmit={handleSignin} className="flex flex-col gap-4 mt-4">
         <div>
@@ -45,6 +47,12 @@ const SigninPage = () => {
           </Button>
         </div>
       </form>
+      <div className="text-center my-3">
+        New to Paraller ?{" "}
+        <Link className="text-blue-500 underline" href={"/signup"}>
+          Register now{" "}
+        </Link>
+      </div>
     </div>
   );
 };
