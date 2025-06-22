@@ -14,6 +14,7 @@ const SignupPage = () => {
 
   return (
     <div className="bg-white rounded-md border p-4 w-full shadow-sm">
+      <title>Signup</title>
       <div className="text-2xl text-black/70">Sign up</div>
       <form onSubmit={handleSignup} className="flex flex-col gap-4 mt-4">
         <div>
