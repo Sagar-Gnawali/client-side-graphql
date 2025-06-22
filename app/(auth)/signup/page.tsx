@@ -1,6 +1,5 @@
 "use client";
-
-import { SignupMutation } from "@/gql/signUpMutation";
+import { SignupMutation } from "@/gql/signupMutation";
 import { setToken } from "@/utils/token";
 import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
