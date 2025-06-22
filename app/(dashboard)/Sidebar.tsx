@@ -1,12 +1,12 @@
-import Logo from '@/app/_components/Logo'
-import { Boxes, LayoutGrid, Settings } from 'lucide-react'
-import Link from 'next/link'
+import Logo from "@/app/_components/Logo";
+import { Boxes, LayoutGrid, Settings } from "lucide-react";
+import Link from "next/link";
 
 const links = [
-  { href: '/', name: 'Issues', Icon: Boxes },
-  { href: '/projects', name: 'Projects', Icon: LayoutGrid },
-  { href: '/settings', name: 'Settings', Icon: Settings },
-]
+  { href: "/", name: "Issues", Icon: Boxes },
+  { href: "/projects", name: "Projects", Icon: LayoutGrid },
+  { href: "/settings", name: "Settings", Icon: Settings },
+];
 
 const Sidebar = () => {
   return (
@@ -28,12 +28,12 @@ const Sidebar = () => {
                   </div>
                 </Link>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

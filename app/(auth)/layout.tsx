@@ -1,4 +1,4 @@
-import Logo from '../_components/Logo'
+import Logo from "../_components/Logo";
 
 const AuthLayout = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const AuthLayout = ({ children }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AuthLayout
+export default AuthLayout;

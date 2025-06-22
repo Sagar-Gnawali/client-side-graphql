@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import PageHeader from '../_components/PageHeader'
-import { useMutation, useQuery } from 'urql'
-import { useState } from 'react'
+import PageHeader from "../_components/PageHeader";
+import { useMutation, useQuery } from "urql";
+import { useState } from "react";
 import {
   Button,
   Modal,
@@ -14,16 +14,16 @@ import {
   Textarea,
   Tooltip,
   useDisclosure,
-} from '@nextui-org/react'
-import { PlusIcon } from 'lucide-react'
-import Issue from '../_components/Issue'
+} from "@nextui-org/react";
+import { PlusIcon } from "lucide-react";
+import Issue from "../_components/Issue";
 
 const IssuesPage = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const [issueName, setIssueName] = useState('')
-  const [issueDescription, setIssueDescription] = useState('')
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [issueName, setIssueName] = useState("");
+  const [issueDescription, setIssueDescription] = useState("");
 
-  const onCreate = async (close) => {}
+  const onCreate = async (close) => {};
 
   return (
     <div>
@@ -76,10 +76,10 @@ const IssuesPage = () => {
                     value={issueDescription}
                     onChange={(e) => setIssueDescription(e.target.value)}
                     classNames={{
-                      inputWrapper: 'bg-white border-none shadow-none p-0',
-                      base: 'bg-white p-0',
-                      input: 'bg-white p-0',
-                      innerWrapper: 'bg-white p-0',
+                      inputWrapper: "bg-white border-none shadow-none p-0",
+                      base: "bg-white p-0",
+                      input: "bg-white p-0",
+                      innerWrapper: "bg-white p-0",
                     }}
                   />
                 </div>
@@ -101,7 +101,7 @@ const IssuesPage = () => {
         </ModalContent>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default IssuesPage
+export default IssuesPage;
