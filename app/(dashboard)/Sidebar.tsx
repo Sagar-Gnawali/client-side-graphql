@@ -2,7 +2,7 @@ import Logo from "@/app/_components/Logo";
 import { removeToken } from "@/utils/token";
 import { Boxes, LayoutGrid, LogOut, Settings } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const links = [
   { href: "/", name: "Issues", Icon: Boxes },
@@ -12,6 +12,7 @@ const links = [
 const sideBarClass = "flex gap-2 items-center hover:bg-white border hover:border-black/20 border-transparent py-2 px-2 rounded-lg transition-all";
 
 const Sidebar = () => {
+  const router = useRouter();
   return (
     <div className="w-full h-full py-3">
       <div className="px-4">
@@ -38,7 +39,7 @@ const Sidebar = () => {
               className={sideBarClass}
               onClick={() => {
                 removeToken();
-                redirect("/signin");
+                router.push("/signin");
               }}
             >
               <LogOut size={16} />
