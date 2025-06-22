@@ -40,6 +40,7 @@ const IssuesPage = () => {
   }
   return (
     <div>
+      <title>Issues</title>
       <PageHeader title="All issues">
         <Tooltip content="New Issue">
           <button
