@@ -7,12 +7,26 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import StatusRing from "./StatusRing";
+import { EditIssueMutation } from "@/gql/editIssueMutation";
+import { useMutation } from "urql";
+interface StatusProps {
+  status: string;
+  issueId: string;
+}
+const Status = ({ status, issueId }: StatusProps) => {
+  const [{ data, fetching, error }, editIssueMutation] = useMutation(EditIssueMutation);
 
-const Status = ({ status, issueId }) => {
-  const onAction = async (newStatus: string) => {};
-
+  const onAction = async (key: React.Key) => {
+    const newStatus = String(key);
+    const payload = {
+      id: issueId,
+      status: newStatus,
+    }
+    await editIssueMutation({ input: payload });
+  };
   return (
     <Dropdown
+      isDisabled={status === "DONE"}
       classNames={{
         content: "p-0 border-small border-divider bg-background",
       }}

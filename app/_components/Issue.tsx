@@ -1,7 +1,13 @@
 import Status from "./Status";
-
-const Issue = ({ issue }) => {
-  const displayId = issue.id.split("-").pop().slice(-3);
+interface IssueProps {
+  issue: {
+    name: string;
+    id: string;
+    status: string;
+  };
+}
+const Issue = ({ issue }: IssueProps) => {
+  const displayId = issue.id!.split("-").pop()!.slice(-3);
 
   return (
     <div className="px-4 h-[40px] border-b flex items-center hover:bg-slate-50 gap-4">

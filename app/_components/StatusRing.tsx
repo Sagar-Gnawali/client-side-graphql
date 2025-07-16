@@ -10,19 +10,18 @@ const getStatusClass = (status: string) => {
       : "";
 };
 
-const StatusRing = ({ status }) => {
+const StatusRing = ({ status }: { status: string }) => {
   const statusClass = getStatusClass(status);
-
   return status === "DONE" ? (
-    <div className="w-4 h-4 rounded-full relative">
+    <div className="w-4 h-4 rounded-full relative cursor-default">
       <div className="w-2 h-2 bg-green-400 rounded-full absolute top-1 left-1"></div>
       <div className="w-4 h-4 rounded-full border-2 border-green-400 absolute top-0 left-0"></div>
     </div>
   ) : (
     <div
       className={cn(
-        "w-4 h-4 rounded-full cursor-pointer border-3",
-        statusClass,
+        "w-4 h-4 rounded-full border-3",
+        statusClass
       )}
     ></div>
   );

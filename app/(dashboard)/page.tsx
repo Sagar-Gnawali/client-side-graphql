@@ -17,7 +17,7 @@ import {
 } from "@nextui-org/react";
 import { PlusIcon } from "lucide-react";
 import Issue from "../_components/Issue";
-import { IssueMutation } from "@/gql/issueMutation";
+import { CreateIssueMutation } from "@/gql/createIssueMutation";
 import { IssuesQuery } from "@/gql/issueQuery";
 interface IssuesTypes {
   issues: {
@@ -30,8 +30,11 @@ const IssuesPage = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [issueName, setIssueName] = useState("");
   const [issueDescription, setIssueDescription] = useState("");
-  const [createIssueResult, createIssue] = useMutation(IssueMutation);
+  const [createIssueResult, createIssue] = useMutation(CreateIssueMutation);
   const { fetching } = createIssueResult;
+  const [{ data, error, fetching: isIssuesFetching }, replay] = useQuery<IssuesTypes>({
+    query: IssuesQuery,
+  });
 
   const onCreate = async (close: () => void) => {
     const payload = {
@@ -43,11 +46,9 @@ const IssuesPage = () => {
       setIssueName("");
       setIssueDescription("");
       close();
+      await replay();
     }
   };
-  const [{ data, error, fetching: isIssuesFetching }] = useQuery<IssuesTypes>({
-    query: IssuesQuery,
-  });
   return (
     <div>
       <title>Issues</title>
