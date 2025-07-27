@@ -1,1 +1,1 @@
-export const url = process!.env!.APP_URL;
+export const url = process.env.NEXT_PUBLIC_APP_URL!;
