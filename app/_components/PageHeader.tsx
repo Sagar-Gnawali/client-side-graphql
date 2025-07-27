@@ -1,4 +1,8 @@
-const PageHeader = ({ title, children }) => {
+interface PageHeaderProps {
+  title: string;
+  children: React.ReactNode;
+}
+const PageHeader = ({ title, children }: PageHeaderProps) => {
   return (
     <div className="w-full flex items-center px-4 h-[40px] border-b gap-4">
       <span>{title}</span>
