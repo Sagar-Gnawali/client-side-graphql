@@ -1,3 +1,4 @@
+import { DeleteModal } from "./DeleteModal";
 import Status from "./Status";
 interface IssueProps {
   issue: {
@@ -16,6 +17,7 @@ const Issue = ({ issue }: IssueProps) => {
       </span>
       <Status status={issue.status} issueId={issue.id} />
       <span>{issue.name}</span>
+      <DeleteModal issueId={issue.id} />
     </div>
   );
 };
