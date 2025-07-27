@@ -1,13 +1,11 @@
 import Logo from "@/app/_components/Logo";
 import { removeToken } from "@/utils/token";
-import { Boxes, LayoutGrid, LogOut, Settings } from "lucide-react";
+import { Boxes, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const links = [
   { href: "/", name: "Issues", Icon: Boxes },
-  { href: "/projects", name: "Projects", Icon: LayoutGrid },
-  { href: "/settings", name: "Settings", Icon: Settings },
 ];
 const sideBarClass = "flex gap-2 items-center hover:bg-white border hover:border-black/20 border-transparent py-2 px-2 rounded-lg transition-all";
 

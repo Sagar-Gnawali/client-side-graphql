@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Client-side GraphQL in Next.js using URQL
 
-## Getting Started
+This project demonstrates how to integrate **URQL** in a **Next.js** app to perform client-side GraphQL operations like `CreateIssue`, `EditIssue`, and `DeleteIssue`.
 
-First, run the development server:
+> **URQL** is a highly customizable and versatile GraphQL client. It emphasizes usability for newcomers while supporting advanced use cases like normalized caching and custom exchanges as your application grows.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📦 Features
+
+- 🔧 URQL client setup with `@urql/next`
+- 🚀 GraphQL Mutations (`CreateIssue`, `EditIssue`, `DeleteIssue`)
+- ✅ Client-side GraphQL operations using hooks
+- 🔄 Mutation state handling (success, error, loading)
+
+---
+
+## 🧱 Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [URQL](https://formidable.com/open-source/urql/)
+- [GraphQL](https://graphql.org/)
+
+---
+
+## Create Mutation
+
+```javascript
+const CreateIssueMutation = gql`
+  mutation Mutation($data: CreateIssueInput!) {
+    createIssue(input: $data) {
+      id
+      createdAt
+    }
+  }
+`;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Query
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```javascript
+const IssuesQuery = gql`
+  query Query {
+    issues {
+      id
+      name
+      status
+    }
+  }
+`;
+```
