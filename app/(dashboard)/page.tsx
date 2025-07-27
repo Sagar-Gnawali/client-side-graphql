@@ -19,7 +19,6 @@ import { PlusIcon } from "lucide-react";
 import Issue from "../_components/Issue";
 import { CreateIssueMutation } from "@/gql/createIssueMutation";
 import { IssuesQuery } from "@/gql/issueQuery";
-import { DeleteIssueMutation } from "@/gql/deleteIssueMutation";
 interface IssuesTypes {
   issues: {
     name: string;
@@ -32,9 +31,8 @@ const IssuesPage = () => {
   const [issueName, setIssueName] = useState("");
   const [issueDescription, setIssueDescription] = useState("");
   const [createIssueResult, createIssue] = useMutation(CreateIssueMutation);
-  const [deleteIssueResult, deleteIssue] = useMutation(DeleteIssueMutation);
   const { fetching } = createIssueResult;
-  const [{ data, error, fetching: isIssuesFetching }, replay] = useQuery<IssuesTypes>({
+  const [{ data, fetching: isIssuesFetching }, replay] = useQuery<IssuesTypes>({
     query: IssuesQuery,
   });
 
@@ -51,9 +49,6 @@ const IssuesPage = () => {
       await replay();
     }
   };
-  const onDelete = async (id: string) => {
-    const res = await deleteIssue({ id: id });
-  }
   return (
     <div>
       <title>Issues</title>

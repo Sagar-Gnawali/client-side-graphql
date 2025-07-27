@@ -5,7 +5,6 @@ import {
     ssrExchange,
     fetchExchange,
     createClient,
-    gql,
 } from "@urql/next";
 import { cacheExchange } from "@urql/exchange-graphcache"; //this for normalize caching it's like redux store for graphQL
 import { url } from "@/utils/url";
